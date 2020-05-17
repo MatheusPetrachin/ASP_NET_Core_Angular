@@ -10,11 +10,18 @@ namespace QuickBuy.Dominio.Entidades
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validate()
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(Email))
+            {
+                AdicionarMensagemValidacao("Não foi informado o Email!");
+            }
+            if (string.IsNullOrEmpty(Password))
+            {
+                AdicionarMensagemValidacao("Senha não informada!");
+            }
         }
     }
 }

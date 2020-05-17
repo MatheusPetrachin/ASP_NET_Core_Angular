@@ -12,6 +12,7 @@ namespace QuickBuy.Dominio.Entidades
         public DateTime DataPedido { get; set; }
         public DateTime DataPrevisaoEntrega { get; set; }
         public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public string CEP { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
@@ -32,6 +33,10 @@ namespace QuickBuy.Dominio.Entidades
             if (string.IsNullOrEmpty(CEP))
             {
                 AdicionarMensagemValidacao("Erro - CEP deve ser preenchido!");
+            }
+            if(FormaPagamentoId == 0)
+            {
+                AdicionarMensagemValidacao("Não identificamos uma forma de pagamento!");
             }
         }
     }
