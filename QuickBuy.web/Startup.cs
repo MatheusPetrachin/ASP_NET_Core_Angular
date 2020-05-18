@@ -25,7 +25,8 @@ namespace QuickBuy.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            var connectionString = Configuration.GetConnectionString("QuickBuyDB");
+
+            var connectionString = Configuration.GetConnectionString("MySQLConnection");
             services.AddDbContext<QuickBuyContext>(options =>
                                                     options.UseLazyLoadingProxies().
                                                         UseMySql(connectionString, m =>
