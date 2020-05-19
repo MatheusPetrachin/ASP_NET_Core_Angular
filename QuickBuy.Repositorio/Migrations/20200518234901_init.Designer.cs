@@ -9,7 +9,7 @@ using QuickBuy.Repositorio.Contexto;
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContext))]
-    [Migration("20200518233506_init")]
+    [Migration("20200518234901_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

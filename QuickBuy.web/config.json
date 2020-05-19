@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "MySQLConnection": "Server=localhost;Uid=developer;Pwd=1234567;Database=QuickBuyDB;"
+    "MySQLConnection": "server=localhost;userid=developer;password=1234567;database=QuickBuyDB"
   }
 }
 
