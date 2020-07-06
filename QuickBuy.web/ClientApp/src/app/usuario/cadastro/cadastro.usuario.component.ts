@@ -3,9 +3,9 @@ import { Usuario } from "../../model/usuario";
 import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 
 @Component({
-  selector: "cadastro-usuario",
-  template: "./cadastro.usuario.component.html",
-  styleUrls: ["./cadastro.usuario.component.css"]
+  selector: 'cadastro-usuario',
+  templateUrl: './cadastro.usuario.component.html',
+  styleUrls: ['./cadastro.usuario.component.css']
 })
 export class CadastroUsuarioComponent implements OnInit {
 
