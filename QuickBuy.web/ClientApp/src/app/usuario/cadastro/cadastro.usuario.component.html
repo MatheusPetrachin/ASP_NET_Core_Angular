@@ -58,7 +58,7 @@
     </div>
 
     <label for="inputLastName" class="sr-only">lastName</label>
-    <input type="text" id="inputName" name="lastName" placeholder="Sobrenome"
+    <input type="text" id="inputLastName" name="lastName" placeholder="Sobrenome"
            class="form-control mb-2"
            [ngClass]="{
            'is-invalid':lastName.invalid && (lastName.dirty || lastName.touched),
@@ -74,12 +74,12 @@
       </div>
     </div>
 
-
-
-    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="entrar()" [disabled]="ativar_spinner">
+    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
-      Entrar
+      Cadastrar
     </button>
+
+    <a [routerLink]='["/login"]'>Voltar</a>
 
     <div class="alert alert-danger" *ngIf="mensagem">
       {{mensagem}}
