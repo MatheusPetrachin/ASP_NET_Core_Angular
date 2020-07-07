@@ -1,0 +1,53 @@
+<h1 class="h4 titulo">Cadastro de Produto</h1>
+
+<label for="inputName" class="sr-only">Nome</label>
+<input type="text" id="inputName"
+       name="inputName"
+       placeholder="Nome do Produto"
+       class="form-control mb-2 col-4"
+       [(ngModel)]="produto.name"
+       #name="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+  <div *ngIf="name.errors.required">
+    Nome deve ser preenchido
+  </div>
+</div>
+
+
+<label for="inputDescricao" class="sr-only">Descrição</label>
+<input type="text" id="inputDescricao"
+       name="inputDescricao"
+       placeholder="Descrição do Produto"
+       class="form-control mb-2 col-4"
+       [(ngModel)]="produto.descricao"
+       #descricao="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+  <div *ngIf="descricao.errors.required">
+    Descrição deve ser preenchido
+  </div>
+</div>
+
+<label for="inputPreco" class="sr-only">Preço</label>
+<input type="number" id="inputPreco"
+       name="inputPreco"
+       placeholder="Preço do Produto"
+       class="form-control mb-2 col-2"
+       [(ngModel)]="produto.preco"
+       #preco="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
+  <div *ngIf="preco.errors.required">
+    Preço deve ser preenchido
+  </div>
+</div>
+
+<div class="input-group mb-2">
+  <div class="custom-file col-4">
+    <input type="file" class="custom-file-input" id="inputFile" aria-describedby="inputGroupFileAddon04">
+    <label class="custom-file-label" for="inputFile">Escolha uma foto</label>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
