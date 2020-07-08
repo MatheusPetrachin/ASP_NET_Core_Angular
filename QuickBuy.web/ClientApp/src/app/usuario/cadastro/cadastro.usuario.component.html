@@ -85,5 +85,9 @@
       {{mensagem}}
     </div>
 
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuário cadastrado com sucesso!<a class="alert-link" [routerLink]='["/login"]'> Clique aqui</a> para entrar no sistema!
+    </div>
+
   </form>
 </div>
