@@ -27,4 +27,8 @@ export class NavMenuComponent {
   sair() {
     this.usuarioServico.limpar_sessao();
   }
+
+  get usuario() {
+    return this.usuarioServico.usuario;
+  }
 }

@@ -5,6 +5,10 @@
        name="inputName"
        placeholder="Nome do Produto"
        class="form-control mb-2 col-4"
+       [ngClass]="{
+        'is-invalid': name.invalid && (name.dirty || name.touched),
+        'is-valid': name.valid && (name.dirty || name.touched)
+       }"
        [(ngModel)]="produto.name"
        #name="ngModel"
        required />
@@ -20,6 +24,10 @@
        name="inputDescricao"
        placeholder="Descrição do Produto"
        class="form-control mb-2 col-4"
+       [ngClass]="{
+        'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
+        'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+       }"
        [(ngModel)]="produto.descricao"
        #descricao="ngModel"
        required />
@@ -34,6 +42,10 @@
        name="inputPreco"
        placeholder="Preço do Produto"
        class="form-control mb-2 col-2"
+       [ngClass]="{
+        'is-invalid': preco.invalid && (preco.dirty || preco.touched),
+        'is-valid': preco.valid && (preco.dirty || preco.touched)
+       }"
        [(ngModel)]="produto.preco"
        #preco="ngModel"
        required />
@@ -45,9 +57,18 @@
 
 <div class="input-group mb-2">
   <div class="custom-file col-4">
-    <input type="file" class="custom-file-input" id="inputFile" aria-describedby="inputGroupFileAddon04">
+    <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)"/>
     <label class="custom-file-label" for="inputFile">Escolha uma foto</label>
   </div>
 </div>
 
-<button class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+<button class="btn btn-primary mb-2" (click)="cadastrar()" [disabled]="ativar_spinner">
+  <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner">
+
+  </span>
+  Cadastrar
+</button>
+
+<div class="aler alert-danger col-4" *ngIf="mensagem"> 
+  {{mensagem}}
+</div>

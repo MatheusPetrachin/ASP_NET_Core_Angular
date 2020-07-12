@@ -12,8 +12,27 @@ import { ProdutoServico } from "../servico/produto/produto.servico";
 export class ProdutoComponent implements OnInit {
 
   public produto: Produto;
+  public arquivoSelecionado: File;
+  public ativar_spinner: boolean;
+  public mensagem: string;
 
-  constructor( private produtoServico: ProdutoServico) { }
+  constructor(private produtoServico: ProdutoServico) { }
+
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);
+    this.ativar_spinner = true;
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado)
+      .subscribe(
+        nomeArquivo => {
+          this.produto.nomeArquivo = nomeArquivo;
+          this.ativar_spinner = false;
+        },
+        e => {
+          console.log(e.error);
+          this.ativar_spinner = false;
+        }
+      );
+  }
 
   ngOnInit(): void {
     this.produto = new Produto();
