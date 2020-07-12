@@ -1,0 +1,5 @@
+<p *ngIf="!produtos">Carregando Produtos...</p>
+
+<div *ngFor="let p of produtos">
+  {{p.name}} || {{p.descricao}} || {{p.preco}} || {{p.nomeArquivo}}
+</div>

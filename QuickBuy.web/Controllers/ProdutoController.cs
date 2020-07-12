@@ -30,7 +30,7 @@ namespace QuickBuy.web.Controllers
         {
             try
             {
-                return Ok(_produtoRepositorio.ObterTodos());
+                return Json(_produtoRepositorio.ObterTodos());
             }
             catch(Exception ex)
             {
@@ -43,6 +43,11 @@ namespace QuickBuy.web.Controllers
         {
             try
             {
+                produto.Validate();
+                if (!produto.EhValido)
+                {
+                    return BadRequest(produto.ObterMensagensValidacao());
+                }
                 _produtoRepositorio.Adicionar(produto);
                 return Created("api/produto", produto);
             }
