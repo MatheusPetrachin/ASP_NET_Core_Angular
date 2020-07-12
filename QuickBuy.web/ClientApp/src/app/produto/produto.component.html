@@ -57,18 +57,24 @@
 
 <div class="input-group mb-2">
   <div class="custom-file col-4">
-    <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)"/>
+    <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)" />
     <label class="custom-file-label" for="inputFile">Escolha uma foto</label>
   </div>
 </div>
 
-<button class="btn btn-primary mb-2" (click)="cadastrar()" [disabled]="ativar_spinner">
-  <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner">
+<div class="form-inline">
+  <button class="btn btn-primary" style="margin-right:4px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner">
 
-  </span>
-  Cadastrar
-</button>
+    </span>
+    Cadastrar
+  </button>
 
-<div class="aler alert-danger col-4" *ngIf="mensagem"> 
+  <button class="btn btn-secondary" (click)="cancelar()" [routerLink]="['/pesquisar-produto']">
+    Cancelar
+  </button>
+</div>
+
+<div class="aler alert-danger col-4" *ngIf="mensagem">
   {{mensagem}}
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { combineLatest } from "rxjs";
 import { Produto } from "../model/produto";
 import { ProdutoServico } from "../servico/produto/produto.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-produto",
@@ -16,7 +17,7 @@ export class ProdutoComponent implements OnInit {
   public ativar_spinner: boolean = false;
   public mensagem: string;
 
-  constructor(private produtoServico: ProdutoServico) { }
+  constructor(private produtoServico: ProdutoServico, private router: Router) { }
 
   public inputChange(files: FileList) {
     this.arquivoSelecionado = files.item(0);
@@ -35,7 +36,12 @@ export class ProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produto = new Produto();
+    var produtoSession = sessionStorage.getItem('produtoSession');
+    if (produtoSession) {
+      this.produto = JSON.parse(produtoSession);
+    } else {
+      this.produto = new Produto();
+    }
   }
 
   public cadastrar() {
@@ -45,7 +51,9 @@ export class ProdutoComponent implements OnInit {
         produtoJson => {
           console.log(produtoJson);
           this.ativadesativaEspera();
-
+          this.router.navigate(["/pesquisar-produto"]);
+          sessionStorage.setItem("produtoSession", "");
+          this.produto = null;
         },
         e => {
           console.log(e.error);
@@ -53,6 +61,11 @@ export class ProdutoComponent implements OnInit {
           this.ativadesativaEspera();
         }
       );
+  }
+
+  public cancelar() {
+    sessionStorage.setItem("produtoSession", "");
+    this.produto = null;
   }
 
   public ativadesativaEspera() {
