@@ -17,6 +17,7 @@ import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.co
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { TruncateModule } from 'ng2-truncate';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
+import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
     CadastroUsuarioComponent,
     PesquisaProdutoComponent,
     LojaPesquisaComponent,
-    LojaProdutoComponent
+    LojaProdutoComponent,
+    LojaEfetivarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,6 +44,7 @@ import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'pesquisar-produto', component: PesquisaProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'loja-produto', component: LojaProdutoComponent },
+      { path: 'loja-efetivar', component: LojaEfetivarComponent },
     ])
   ],
   providers: [UsuarioServico, ProdutoServico],
