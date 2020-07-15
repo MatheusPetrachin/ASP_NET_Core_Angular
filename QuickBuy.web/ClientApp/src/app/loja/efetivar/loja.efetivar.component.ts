@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LojaCarrinhoCompras } from "../carrinho/loja.carrinho.component";
 import { Produto } from "../../model/produto";
+import { Pedido } from "../../model/pedido";
 
 @Component({
   selector: "loja-efetivar",
@@ -42,5 +43,10 @@ export class LojaEfetivarComponent implements OnInit {
 
   public atualizarTotal() {
     this.total = this.produtos.reduce((acc, produto) => acc + produto.preco, 0);
+  }
+
+  public efetivarCompra() {
+    let pedido = new Pedido();
+
   }
 }
