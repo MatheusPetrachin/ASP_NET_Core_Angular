@@ -14,6 +14,7 @@ export class Pedido {
   public itensPedido: ItemPedido[];
 
   constructor() {
+    this.dataPedido = new Date();
     this.itensPedido = [];
   }
 }
